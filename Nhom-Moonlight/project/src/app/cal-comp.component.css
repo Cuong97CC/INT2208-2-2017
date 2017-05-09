@@ -18,3 +18,11 @@
     #play {
       color : #0C0;
     }
+@media all and (max-width: 480px) {
+	#question {
+		font-size:200%;
+		}
+	#greater,#equal,#smaller {
+		font-size: 50%;
+		}
+}

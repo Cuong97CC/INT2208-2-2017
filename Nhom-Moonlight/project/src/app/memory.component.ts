@@ -187,6 +187,7 @@ result_id:number;
 on_play = false;
 intervalSet = null;
 
+//Hàm kiểm tra xem ô đã được tô màu chưa
 checkUsed(i:number):boolean {
 		if(this.color_id[i] === 0) {
 			return false;
@@ -194,6 +195,7 @@ checkUsed(i:number):boolean {
 		return true;
 	}
 
+//Hàm kiểm tra xem các sai số tạo ra có hợp lệ không
 checkErrorValid():boolean {
 	if(this.error[0] === 0 || this.error[1] === 0 || this.error[2] === 0 || this.error[0] === this.error[1] || this.error[1] === this.error[2] || this.error[2] === this.error[0]) {
 		return false;
@@ -203,6 +205,7 @@ checkErrorValid():boolean {
 		}
 	}
 
+//Hàm tạo câu hỏi
 init():void {
   document.getElementById('question-item').style.color = '#000';
   this.on_play = false;
@@ -258,6 +261,7 @@ init():void {
   }
 	}
 
+//Hàm hiển thị các dữ liệu 
 setData():void {
   this.question = "Ghi nhớ";
   this.color = "...";
@@ -273,6 +277,7 @@ setData():void {
     this.start();
   }
 
+//Hàm cài đặt câu hỏi
 setQuestion():void {
   this.question = "Tính tổng các số trong những ô màu"
 	if(this.color_chooser === 1) {
@@ -308,6 +313,7 @@ setQuestion():void {
 			}
 	}
 
+//Hàm hiển thị đáp án đúng khi trả lời sai
 review():void {
 	for(var i=0; i<9; i++) {
 			if(this.color_id[i] === 1) {
@@ -326,12 +332,14 @@ review():void {
 		document.getElementById('choice' + this.result_id).style.backgroundColor = "#3F3";
 	}
 
+//Hàm thông báo trả lời đúng
 rightAnswer():void {
 	this.score+=5;
 	this.init();
 	this.setData();
 	}
 
+//Hàm thông báo trả lời sai
 wrongAnswer():void {
 	this.question = 'Chúc em may mắn lần sau';
 	this.color = 'KẾT THÚC';
@@ -339,6 +347,7 @@ wrongAnswer():void {
 	this.on_play = false;
 	}
 
+//Hàm thực hiện khi chọn câu trả lời
 onChoose(id:number):void {
   if(this.on_play === true) {
   var temp = 0;
@@ -371,6 +380,7 @@ onChoose(id:number):void {
   }
 }
 
+//Hàm thực hiện khi click play
 begin():void {
   this.score = 0;
     for(var i=0; i<4; i++) {
@@ -380,6 +390,7 @@ begin():void {
     this.setData();
 }
 
+//Hàm thực hiện khi click retry
 retry():void {
   this.score = 0;
     for(var i=0; i<4; i++) {
@@ -389,14 +400,15 @@ retry():void {
     this.setData();
 }
 
+//Hàm chạy thời gian
 start():void {
-  this.length = 0;
+  this.length = -25;
   clearInterval(this.intervalSet);
   this.intervalSet = setInterval(()=>this.tick(),1000);
 }
 
 private tick(): void{
-    this.length += 20;
+    this.length += 25;
     document.getElementById('timer').style.width = this.length + "%";
     if(this.length >= 100) {
       clearInterval(this.intervalSet);

@@ -13,7 +13,6 @@ import { Component } from '@angular/core';
 
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
   </head>
   <body>
@@ -95,12 +94,10 @@ import { Component } from '@angular/core';
         </div>
         <div class="col-xs-3">
         </div>
-        </div>
-      <div class="row">
-        <div class="col-md-12" style="padding-bottom: 55px">
+        <div class="col-md-12">
         <a routerLink="/home" routerLinkActive="active" (click)="end()">Trang chủ</a>
         </div>
-        </div>
+	</div>
 </div>
 	<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
   </body>
@@ -118,6 +115,7 @@ export class RWComponent {
   length = 100;
   intervalSet = null;
 
+//Hàm tạo câu hỏi
 init():void {
 	var resultChooser = Math.floor(Math.random()*2);
 	var signChooser = Math.floor(Math.random()*4);
@@ -174,12 +172,14 @@ init():void {
     this.start();
 	}
 
+//Hàm thông báo trả lời đúng
 rightAnswer():void {
 	this.return = 'Chuẩn rồi!';
   document.getElementById('return').style.color = '#0C0';
 	this.score++;
 	}
 
+//Hàm thông báo trả lời sai
 wrongAnswer():void {
 	this.return = 'Sai mất rôi!';
 	document.getElementById('return').style.color = '#F00';
@@ -192,6 +192,7 @@ wrongAnswer():void {
     }
 }
 
+//Hàm thông báo hếtgiờ mà chưa trả lời
 late():void {
   this.return = 'Chậm mất rồi!';
 	document.getElementById('return').style.color ='#F00';
@@ -199,6 +200,7 @@ late():void {
   this.init();
 }
 
+//Hàm tực hiện khi chọn câu trả lời
 onChoose(i:boolean):void {
 if(this.on_play === true) {
   if(this.result === i) {
@@ -212,6 +214,7 @@ if(this.on_play === true) {
 }
 }
 
+//Hàm thực hiện khi click retry
 retry():void {
   this.chances = 2;
   this.score = 0;
@@ -223,6 +226,7 @@ retry():void {
   document.getElementById('wrong').style.backgroundColor = '#FFF';
 }
 
+//Hàm thực hiện khi click play
 begin():void {
   this.chances = 2;
   this.score = 0;
@@ -234,6 +238,7 @@ begin():void {
   document.getElementById('wrong').style.backgroundColor = '#FFF';
 }
 
+//Hàm thông báo trò chơi kết thúc
 over():void {
   this.question = "KẾT THÚC!";
   this.return = "---O---";
@@ -244,14 +249,15 @@ over():void {
   document.getElementById('wrong').style.backgroundColor = '#808080';
 }
 
+//Hàm chạy thời gian
 start():void {
-  this.length = 0;
+  this.length = -100/3;
   clearInterval(this.intervalSet);
   this.intervalSet = setInterval(()=>this.tick(),1000);
 }
 
 private tick(): void{
-    this.length+=25;
+    this.length+=100/3;
     document.getElementById('timer').style.width = this.length + "%";
     if(this.length >= 100 && this.chances > 1) {
       this.late();

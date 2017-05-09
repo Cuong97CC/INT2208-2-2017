@@ -18,3 +18,14 @@
     #play {
       color : #0C0;
     }
+@media all and (max-width: 480px) {
+	#score {
+		font-size: 100%;
+		}
+	#question {
+		font-size:200%;
+		}
+	#num0,#num1,#num2,#num3 {
+		font-size: 50%;
+		}
+}

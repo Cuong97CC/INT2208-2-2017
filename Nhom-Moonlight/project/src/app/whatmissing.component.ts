@@ -116,7 +116,7 @@ import { AppComponent } from './app.component';
 			</div>
 		</div>
 	</div>
-	<div class="row" style="padding-bottom: 15px; padding-bottom: 55px">
+	<div class="row" style="padding-bottom: 15px">
 		<div class="col-md-12">
 			<a routerLink="/home" routerLinkActive="active" (click)="end()">Trang chủ</a>
 		</div>
@@ -141,6 +141,7 @@ export class WMComponent {
   num3:number;
   sign:number;
 
+//Hàm tạo câu hỏi
 init():void {
 	this.num1 = Math.floor(Math.random()*20)+1;
 	this.num2 = Math.floor(Math.random()*20)+1;
@@ -169,6 +170,7 @@ init():void {
   this.start();
 	}
 
+//Hàm thông báo trả lời đúng
 rightAnswer():void {
 	this.return = 'Đúng rồi!';
   document.getElementById('return').style.color = '#0C0';
@@ -176,6 +178,7 @@ rightAnswer():void {
 	this.init();
 	}
 
+//Hàm thông báo trả lời sai
 wrongAnswer():void {
 	this.return = 'Sai mất rôi!';
 	document.getElementById('return').style.color = '#F00';
@@ -188,6 +191,7 @@ wrongAnswer():void {
     }
 	}
 
+//Hàm thông báo hết giờ mà chưa trả lời
 late():void {
   this.return = 'Chậm mất rồi!';
 	document.getElementById('return').style.color ='#F00';
@@ -195,6 +199,7 @@ late():void {
   this.init();
 }
 
+//Hàm thực hiện khi chọn dấu '+'
 onChooseAdd():void {
   if(this.on_play === true) {
 	if(this.num1 + this.num2 === this.num3) {
@@ -206,6 +211,7 @@ onChooseAdd():void {
   }
 	}
 
+//Hàm thực hiện khi chọn dấu '-'
 onChooseSub():void {
   if(this.on_play === true) {
 	if(Math.max(this.num1,this.num2) - Math.min(this.num1,this.num2) === this.num3) {
@@ -217,6 +223,7 @@ onChooseSub():void {
   }
 	}
 
+//Hàm thực hiện khi chọn dấu 'x'
 onChooseMul():void {
   if(this.on_play === true) {
 	if(this.num1 * this.num2 === this.num3) {
@@ -228,6 +235,7 @@ onChooseMul():void {
 }
 	}
 
+//Hàm thực hiện khi chọn dấu '/'
 onChooseDiv():void {
   if(this.on_play === true) {
 	if(this.num1 / this.num2 === this.num3) {
@@ -239,6 +247,7 @@ onChooseDiv():void {
   }
 	}
 
+//Hàm thông báo trò chơi kết thúc
 over():void {
   this.question = "KẾT THÚC!";
   this.return = "---O---";
@@ -251,6 +260,7 @@ over():void {
   document.getElementById('div').style.backgroundColor = '#808080';
 }
 
+//Hàm thực hiện khi click play
 begin():void {
   this.chances = 2;
   this.score = 0;
@@ -264,6 +274,7 @@ begin():void {
   document.getElementById('div').style.backgroundColor = '#FFF';
 }
 
+//Hàm thực hiện khi click retry
 retry():void {
   this.chances = 2;
 	this.score = 0;
@@ -277,14 +288,15 @@ retry():void {
   document.getElementById('div').style.backgroundColor = '#FFF';
 	}
 
+//Hàm chạy thời gian
   start():void {
-  this.length = 0;
+  this.length = -100/3;
   clearInterval(this.intervalSet);
   this.intervalSet = setInterval(()=>this.tick(),1000);
 }
 
 private tick(): void{
-    this.length+=25;
+    this.length+=100/3;
     document.getElementById('timer').style.width = this.length + "%";
     document.ondeactivate
     if(this.length >= 100 && this.chances > 1) {

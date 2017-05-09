@@ -104,7 +104,7 @@ import { Component } from '@angular/core';
 		</div>
 	</div>
 	<div class="row" id="back">
-		<div class="col-md-12" style="padding-bottom: 55px">
+		<div class="col-md-12">
 			<a routerLink="/home" routerLinkActive="active" (click)="end()">Trang chủ</a>
 		</div>
 	</div>
@@ -125,6 +125,7 @@ export class SBComponent {
   timeout;
   intervalSet = null;
 
+//Hàm tìm số nhỏ nhất trong danh sách
 findMin():number {
 	var min = this.num[0];
 	if(this.num.length>1) {
@@ -137,6 +138,7 @@ findMin():number {
 	return min;
 }
 
+//Hàm kiểm tra xem có hai số trùng nhau không
 checkExist():boolean {
 	if(this.num.length>1){
 	for(var i=0; i<this.num.length-1; i++) {
@@ -149,6 +151,7 @@ checkExist():boolean {
 	return true;
 	}
 
+//Hàm kiểm tra xem tất cả các số đã được chọn chưa
 checkDone():boolean {
 	for(var i = 0; i < 6; i++) {
 		if(this.num[i] !== 100) {
@@ -158,6 +161,7 @@ checkDone():boolean {
 		return true;
 	}
 
+//Hàm tạo câu hỏi
 init():void {
 	this.num = [];
   this.selected = [false,false,false,false,false,false];
@@ -172,11 +176,12 @@ init():void {
       document.getElementById('num' + i).style.color = '#000';
     }
 
-      this.timeout = 100/8;
+      this.timeout = 100/7;
       this.start();
 	}
 
 
+//Hàm thông báo trả lời sai
 over():void {
 			for(var i=0; i<6; i++) {
 			this.num[i] = 0;
@@ -193,6 +198,7 @@ over():void {
     clearInterval(this.intervalSet);
 	}
 
+//Hàm thông báo hết giừo mà chưa trả lời
 late():void {
   for(var i=0; i<6; i++) {
 			this.num[i] = 0;
@@ -209,18 +215,21 @@ late():void {
     clearInterval(this.intervalSet);
 	}
 
+//Hàm thực hiện khi click retry
 retry():void {
     this.on_play = true;
 		this.score = 0;
 		this.init();
 		}
 
+//Hàm thực hiện khi click play
 begin():void {
     this.on_play = true;
     this.score = 0;
 		this.init();
 }
 
+//Hàm thực hiện khi chọn một ô
 onChoose(i:number):void {
   if(this.on_play === true) {
   if(this.selected[i] === false) {
@@ -241,8 +250,9 @@ onChoose(i:number):void {
   }
 }
 
+//Hàm chạy thời gian
 start():void {
-  this.length = 0;
+  this.length = -100/7;
   clearInterval(this.intervalSet);
   this.intervalSet = setInterval(()=>this.tick(),1000);
 }

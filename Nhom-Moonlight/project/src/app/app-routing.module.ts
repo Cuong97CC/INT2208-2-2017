@@ -2,6 +2,7 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { FBComponent }  from './feedback.component';
 import { FTRComponent }   from './findresult.component';
 import { RWComponent } from './rightwrong.component';
 import { WMComponent } from './whatmissing.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'makenumber',  component: MNComponent },
   { path: 'memory',  component: MemComponent },
   { path: 'home',  component: HomeComponent },
+  { path: 'feedback',  component: FBComponent },
 ];
 
 @NgModule({

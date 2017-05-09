@@ -13,6 +13,7 @@ import { Component } from '@angular/core';
     <title>{{title}}</title>
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
   </head>
   <body>
@@ -117,7 +118,7 @@ import { Component } from '@angular/core';
 			</div>
 		</div>
 	</div>
-	<div class="row" style="padding-bottom: 15px; padding-bottom: 55px">
+	<div class="row" style="padding-bottom: 15px">
 		<div class="col-md-12">
 			<a routerLink="/home" routerLinkActive="active" (click)="end()">Trang chủ</a>
 		</div>
@@ -153,6 +154,7 @@ export class FTRComponent {
 		}
 	}
 
+//Hàm tạo câu hỏi
   init(): void {
 	this.val1 = Math.floor(Math.random()*20);
 	this.val2 = Math.floor(Math.random()*20)+1;
@@ -199,6 +201,7 @@ export class FTRComponent {
     this.start();
   }
 
+//Hàm thông báo khi có câu trả lời đúng
   rightAnswer():void {
     this.return = "Đúng rồi!";
     document.getElementById('return').style.color = "#0C0";
@@ -206,6 +209,7 @@ export class FTRComponent {
 	  this.init();
 	}
 
+//Hàm thông báo khi có câu trả lời sai
   wrongAnswer():void {
 	  this.return = 'Sai mất rồi!';
 	  document.getElementById('return').style.color ='#F00';
@@ -218,6 +222,7 @@ export class FTRComponent {
     }
 	}
 
+//Hàm thông báo khi hết giờ mà chưa có câu trả lời
 late():void {
   this.return = 'Chậm mất rồi!';
 	document.getElementById('return').style.color ='#F00';
@@ -225,6 +230,7 @@ late():void {
   this.init();
 }
 
+//Hàm thông báo trò chơi kết thúc
   over(): void{
     this.on_play = false;
     this.question = "KẾT THÚC!";
@@ -237,6 +243,7 @@ late():void {
 		document.getElementById("num3").style.backgroundColor = '#808080';
   }
 
+//Hàm thực hiện khi chọn câu trả lời
 onChoose(i: number):void{
 if( this.on_play === true){
   if(this.results[i] === this.result){
@@ -249,7 +256,7 @@ if( this.on_play === true){
 }
 
 private tick(): void{
-    this.length+=25;
+    this.length+=100/3;
     document.getElementById('timer').style.width = this.length + "%";
     if(this.length >= 100 && this.chances > 1) {
       this.late();
@@ -260,12 +267,14 @@ private tick(): void{
     }
   }
 
+//Hàm chạy thời gian
 start():void {
-  this.length = 0;
+  this.length = -100/3;
   clearInterval(this.intervalSet);
   this.intervalSet = setInterval(()=>this.tick(),1000);
 }
 
+//Hàm thực hiện khi click play
   begin(): void{
     this.chances = 2;
     this.score = 0;
@@ -279,6 +288,7 @@ start():void {
 		(<HTMLInputElement> document.getElementById("num3")).style.backgroundColor = '#6F9';
   }
 
+//Hàm thực hiện khi click retry
   retry(): void{
     this.chances = 2;
     this.score = 0;

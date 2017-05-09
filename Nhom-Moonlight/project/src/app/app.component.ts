@@ -22,16 +22,14 @@ import { AppRoutingModule } from './app-routing.module';
     <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12" id="header">
-			<h2>
-				{{title}}
-			</h2>
+				<a routerLink="/home" routerLinkActive="active"><h2 style="color: #FFF">{{title}}</h2></a>
 		</div>
 	</div>
   <router-outlet></router-outlet>
 	<div class="row">
 		<div class="col-md-12" id="footer">
 			<address>
-				 <strong>Moonlight Inc.</strong><br /> @
+				 <strong>@Moonlight Inc.</strong><br /> <a style="color: #FFF" routerLink="/feedback" routerLinkActive="active" (click)="refresh()">Phản hồi</a>
 			</address>
 		</div>
 	</div>
@@ -43,4 +41,11 @@ styleUrls: ['/app.component.css']
 })
 export class AppComponent {
   title = "TOÁN TRẺ EM";
+
+  refresh():void {
+    var timeOutSet = setTimeout(function() {
+      location.reload(true);
+      clearTimeout(timeOutSet);
+    }, 500);
+  }
  }

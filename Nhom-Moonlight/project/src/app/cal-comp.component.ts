@@ -13,6 +13,7 @@ import { Component } from '@angular/core';
 
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
 
   </head>
@@ -108,7 +109,7 @@ import { Component } from '@angular/core';
         	<div class="col-xs-3">
 				</div>
 			</div>
-			<div class="row" style="padding-top: 15px; padding-bottom: 55px">
+			<div class="row" style="padding-top: 15px">
 				<div class="col-md-12">
 					<a routerLink="/home" routerLinkActive="active" (click)="end()">Trang chủ</a>
 				</div>
@@ -133,6 +134,7 @@ export class CCComponent {
   length = 0;
   intervalSet = null;
 
+//Hàm tạo câu hỏi
   init():void {
   this.sign = '?';
   document.getElementById('sign').style.color = '#000';
@@ -174,6 +176,7 @@ export class CCComponent {
   this.start();
   }
 
+//Hàm thực hiện hành động khi có câu trả lời đúng
 rightAnswer():void {
   this.init();
   this.score++;
@@ -181,6 +184,7 @@ rightAnswer():void {
   document.getElementById('return').style.color = "#0C0";
 }
 
+//Hàm thực hiện hành động khi có câu trả lời sai
 over():void {
   this.on_play = false;
   this.cal1 = this.cal1 + ' (' + this.result1 + ')';
@@ -199,6 +203,7 @@ over():void {
   clearInterval(this.intervalSet);
 }
 
+//Hàm thực hiện khi click play
 begin():void {
   this.score = 0;
   this.on_play = true;
@@ -207,6 +212,7 @@ begin():void {
   document.getElementById('return').style.color ='#000';
 }
 
+//Hàm thực hiện khi click retry
 retry():void {
   this.score = 0;
   this.on_play = true;
@@ -215,6 +221,7 @@ retry():void {
   document.getElementById('return').style.color ='#000';
 }
 
+//Hàm thực hiện khi chọn dấu '>'
 onChooseGreater():void {
   if(this.on_play === true) {
   if(this.result1 > this.result2) {
@@ -227,6 +234,7 @@ onChooseGreater():void {
   }
 }
 
+//Hàm thực hiện khi chọn dấu '='
 onChooseEqual():void {
   if(this.on_play === true) {
   if(this.result1 === this.result2) {
@@ -239,6 +247,7 @@ onChooseEqual():void {
   }
 }
 
+//Hàm thực hiện khi chọn dấu '<'
 onChooseSmaller():void {
   if(this.on_play === true) {
   if(this.result1 < this.result2) {
@@ -251,14 +260,15 @@ onChooseSmaller():void {
   }
 }
 
+//Hàm chạy thời gian
 start():void {
-  this.length = 0;
+  this.length = -100/7;
   clearInterval(this.intervalSet);
   this.intervalSet = setInterval(()=>this.tick(),1000);
 }
 
 private tick(): void{
-    this.length+=100/8;
+    this.length+=100/7;
     document.getElementById('timer').style.width = this.length + "%";
     if(this.length >= 100) {
       this.return = "Hết giờ";

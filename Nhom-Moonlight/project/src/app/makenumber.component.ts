@@ -13,6 +13,7 @@ import { Component } from '@angular/core';
 
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
   </head>
   <body>
@@ -137,6 +138,7 @@ export class MNComponent {
    on_play = false;
    intervalSet = null;
 
+//Hàm kiểm tra xem ô đã đựoc chọn chưa
 checkUsed(i:number):boolean {
 		if(this.id[i] === 10) {
 			return true;
@@ -144,6 +146,7 @@ checkUsed(i:number):boolean {
 		return false;
 	}
 
+//Hàm tạo câu hỏi
 init():void {
 	this.counter = 0;
 	this.sum = 0;
@@ -167,6 +170,7 @@ init():void {
   this.start();
 	}
 
+//Hàm thông báo khi trả lời đúng
 rightAnswer():void {
 	this.return = 'Tốt lắm!';
   document.getElementById('return').style.color = '#0C0';
@@ -174,6 +178,7 @@ rightAnswer():void {
 	this.init();
 	}
 
+//Hàm thông báo trò chơi kết thúc
 over():void {
 	this.on_play = false;
 	this.return = 'KẾT THÚC';
@@ -184,6 +189,7 @@ over():void {
   }
 	}
 
+//Hàm thực hiện khi chọn một ô
 onChoose(i:number):void {
   if(this.selected[i] === false && this.on_play === true) {
   this.sum+=this.num[i];
@@ -199,6 +205,7 @@ onChoose(i:number):void {
   }
 }
 
+//Hàm thực hiện khi click play
 begin():void {
   this.return = "---O---";
   document.getElementById('return').style.color = '#000';
@@ -207,6 +214,7 @@ begin():void {
   this.score = 0;
 }
 
+//Hàm thực hiện khi click retry
 retry():void {
   this.return = "---O---";
   document.getElementById('return').style.color = '#000';
@@ -215,14 +223,15 @@ retry():void {
   this.score = 0;
 }
 
+//Hàm chạy thời gian
 start():void {
-  this.length = 0;
+  this.length = -100/7;
   clearInterval(this.intervalSet);
   this.intervalSet = setInterval(()=>this.tick(),1000);
 }
 
 private tick(): void{
-    this.length+=100/8;
+    this.length+=100/7;
     document.getElementById('timer').style.width = this.length + "%";
     if(this.length >= 100) {
       this.over();

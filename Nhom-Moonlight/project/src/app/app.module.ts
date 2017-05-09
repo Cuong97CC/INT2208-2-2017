@@ -4,6 +4,7 @@ import { FormsModule }   from '@angular/forms';
 import { RouterModule }   from '@angular/router';
 
 import { AppComponent }  from './app.component';
+import { FBComponent }  from './feedback.component';
 import { FTRComponent }   from './findresult.component';
 import { RWComponent } from './rightwrong.component';
 import { WMComponent } from './whatmissing.component';
@@ -26,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   declarations: [
     AppComponent,
+    FBComponent,
     HomeComponent,
     CaculatingComponent,
     CompareComponent,
