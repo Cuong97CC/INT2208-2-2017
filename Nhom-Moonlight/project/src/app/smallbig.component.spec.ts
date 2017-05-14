@@ -5,7 +5,7 @@ import { SBComponent } from './smallbig.component';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 
-describe('AppComponent', () => {
+describe('Small to Big', () => {
   beforeEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
     TestBed.configureTestingModule({
