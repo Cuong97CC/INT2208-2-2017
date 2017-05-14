@@ -5,7 +5,7 @@ import { FTRComponent } from './findresult.component';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 
-describe('AppComponent', () => {
+describe('Find the result test', () => {
   beforeEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
     TestBed.configureTestingModule({
