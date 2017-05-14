@@ -5,7 +5,7 @@ import { RWComponent } from './rightwrong.component';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 
-describe('AppComponent', () => {
+describe('Right or Wrong', () => {
   beforeEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
     TestBed.configureTestingModule({
