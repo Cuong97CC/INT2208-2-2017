@@ -5,7 +5,7 @@ import { WMComponent } from './whatmissing.component';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 
-describe('AppComponent', () => {
+describe('What Missing test', () => {
   beforeEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
     TestBed.configureTestingModule({
